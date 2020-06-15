@@ -51,7 +51,7 @@ WITH emp AS (
 --    from emp
 --   order by travel_comm desc nulls first
 
---8 creates auxillary column to sort travel_comm for all the data and salary for others
+--8 creates auxillary column to sort travel_comm for all the data people and salary for others
 
 -- select ename,sal,job,travel_comm,
 --             case when (job like '%data%' or job like 'Data%') then travel_comm else sal end as ordered
@@ -64,6 +64,10 @@ WITH emp AS (
 --      from emp
 --  order by case when (job like '%data%' or job like 'Data%') then travel_comm  else sal end desc
 
+
+-- Note in order by always think of creating an auxillary column and passing that col to 
+-- order by if you have to do a conditional sorting on a columns value like when job = data and others similarly when 
+-- a column is NULL and not NULL
 
 
 
