@@ -63,6 +63,17 @@ WITH emp AS (
 -- (select  *,coalesce(comm,0) as comms
 --    from emp)
 
+--c- one more alternative
+-- (select *,0 as comms  from emp 
+-- where comm is NULL)
+
+--d- for multiple cols
+-- (select  *,coalesce(comm,0) as comms,
+-- coalesce(sal,0) as sals
+--    from emp)
+
+-- coalesce is syntactic shortcut for the CASE expression(https://docs.microsoft.com/en-us/sql/t-sql/language-elements/coalesce-transact-sql?view=sql-server-ver15)
+
 
 --8- pattern matching
 --  (select ename, job
