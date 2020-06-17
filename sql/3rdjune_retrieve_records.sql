@@ -16,7 +16,12 @@ WITH emp AS (
 -- where deptno>10)
 
 
--- 3- if/else with result aliased
+-- 3- if/else with result aliased(creating an aux col on condition)
+-- The execution flow is similar to if..if (when..when) and if..else (when..else)
+-- Go through this once daily (https://www.codecademy.com/forum_questions/51684a3d4ce76309b4001b9c) to keep in mind if..elif..else
+-- when dealing with multiple cols in when clause be extra cautious as more than one condition can satisfy then at that time first matching condition will be 
+-- considered
+
 --  (select ename,sal,
 -- CASE when sal=10000 then 'UNDERPAID'
 --      when sal>=20000 then 'ok'
@@ -27,10 +32,15 @@ WITH emp AS (
 
 -- 4- limiting the number of results(remember the special case of oracle ROWNUM)
 --  (select *
---  from emp limit 1)
+--  from emp limit 5)
+-- This is equivalent to (in Oracle) :
+--  (select *
+--  from emp 
+-- where rownum <= 5)
+-- As we can't pass rownum =5 as oracle will check whether returned query row is rownum = 5 which won't be true hence row discarded
 
 
---5- limiting the number of results and also randomizing the result. Execution order(order by before limit)
+--5-  Random results : (if more than 2)limiting the number of results and also randomizing the result. Execution order(order by before limit)
 -- select ename,job
 --  from emp
 --  order by rand() limit 2
@@ -41,7 +51,16 @@ WITH emp AS (
 --   where comm is null)
 
 --7- replacing Nulls
--- (select coalesce(comm,0) as comm
+--a- creating an aux column via when then
+-- (select *,
+-- CASE
+-- when comm is null then 0
+-- else comm
+-- end as comms
+--  from emp)
+
+--b- creating an aux column using coalesce 
+-- (select  *,coalesce(comm,0) as comms
 --    from emp)
 
 

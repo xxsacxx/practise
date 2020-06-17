@@ -26,10 +26,10 @@ WITH emp AS (
 
 -- select deptno,sal,ename,job
 -- from emp
--- order by deptno desc,sal desc
+-- order by deptno asc,sal desc
 
---4 gives the substring 
--- select substr(job,length(job)-1)
+--4 gives the substring (col_name,starting_point)
+-- select substr(job,length(job)-2)
 -- from emp
 
 --5 creates the substr and sorts the result by its aliases without inline view as ORDER BY executes after select 
