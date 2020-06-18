@@ -17,7 +17,10 @@ WITH emp AS (
 
 
 -- 3- if/else with result aliased(creating an aux col on condition)
--- The execution flow is similar to if..if (when..when) and if..else (when..else)
+-- The execution flow is similar to if..if (when..when) the difference is it takes a row 
+-- applies when ...when's first condition and stops when any satisfies,while if..if still
+-- keep applying even if any satisfies
+--  and if..else (when..else)
 -- Go through this once daily (https://www.codecademy.com/forum_questions/51684a3d4ce76309b4001b9c) to keep in mind if..elif..else
 -- when dealing with multiple cols in when clause be extra cautious as more than one condition can satisfy then at that time first matching condition will be 
 -- considered
@@ -51,7 +54,7 @@ WITH emp AS (
 --   where comm is null)
 
 --7- replacing Nulls
---a- creating an aux column via when then
+--a- creating an aux column via when then (for full table)
 -- (select *,
 -- CASE
 -- when comm is null then 0
@@ -59,11 +62,11 @@ WITH emp AS (
 -- end as comms
 --  from emp)
 
---b- creating an aux column using coalesce 
+--b- creating an aux column using coalesce (for full table)
 -- (select  *,coalesce(comm,0) as comms
 --    from emp)
 
---c- one more alternative
+--c- one more alternative (for null row)
 -- (select *,0 as comms  from emp 
 -- where comm is NULL)
 
