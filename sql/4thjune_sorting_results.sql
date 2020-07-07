@@ -65,6 +65,7 @@ WITH emp AS (
 --  order by case when (job like '%data%' or job like 'Data%') then travel_comm  else sal end desc
 
 
+--  Order By basically needs a way to rank the rows , most of the times it is done by passing columns
 -- Note in order by always think of creating an auxillary column and passing that col to 
 -- order by if you have to do a conditional sorting on a columns value like when job = data and others similarly when 
 -- a column is NULL and not NULL
